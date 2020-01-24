@@ -46,13 +46,7 @@ class MainApp(MDApp):
 	def build(self):
 		menu = Factory.AppLayout()
 		self.root = menu
-		
-	def navigate(self, screen_name):
-		self.root.ids.screen_manager.current = screen_name
-		
 	
-		
-
 
 if __name__ == "__main__":
     MainApp().run()

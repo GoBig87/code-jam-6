@@ -6,7 +6,7 @@
 <NavigationItem>
     theme_text_color: 'Custom'
     divider: None
-    on_release: app.navigate(self.text)
+    on_release: app.root.ids.screen_manager.current = self.text
 
     IconLeftWidget:
         icon: root.icon
@@ -95,9 +95,16 @@
 <WelcomeBtn@MDRectangleFlatIconButton>:
 	theme_text_color: "Custom"
 	text_color: 1, 1, 1, 1
+	font_size: dp(10)
 	md_bg_color: app.theme_cls.primary_color
-	on_release: app.navigate(self.text)
+	on_release: app.root.ids.screen_manager.current = self.text
 
+<OpenDrawer@MDIconButton>:
+	icon: 'menu'
+	pos_hint: {'top': 1}
+	theme_text_color: "Custom"
+	text_color: 1, 1, 1, 1
+	on_release: app.root.ids.nav_drawer.toggle_nav_drawer()
 
 <AppLayout>:
 	canvas.before:
@@ -184,48 +191,50 @@
 										text: "Exit"
 										icon: "exit-to-app"
 										
-						MDIconButton:
-							icon: 'menu'
-							pos_hint: {'top': 1}
-							theme_text_color: "Custom"
-							text_color: 1, 1, 1, 1
-							on_release: root.ids.nav_drawer.toggle_nav_drawer()
+						OpenDrawer:
+	
 							
 				Screen:
 					name: 'Decode'
 					
-					BoxLayout:
+					FloatLayout:
 						id: decode
+						OpenDrawer:
 						
 				Screen:
 					name: 'Encode'
 					
-					BoxLayout:
+					FloatLayout:
 						id: encode
+						OpenDrawer:
 			
 				Screen:
 					name: 'Sign In'
 					
-					BoxLayout:
+					FloatLayout:
 						id: sign_in
+						OpenDrawer:
 						
 				Screen:
 					name: 'Calibrate'
 					
-					BoxLayout:
+					FloatLayout:
 						id: calibrate
+						OpenDrawer:
 						
 				Screen:
 					name: 'Train'
 					
-					BoxLayout:
+					FloatLayout:
 						id: train
+						OpenDrawer:
 				
 				Screen:
 					name: 'Exit'
 					
-					BoxLayout:
+					FloatLayout:
 						id: exit
+						OpenDrawer:
 							
 			MDNavigationDrawer:
 				id: nav_drawer
