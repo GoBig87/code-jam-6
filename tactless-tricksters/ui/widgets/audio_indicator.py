@@ -2,8 +2,8 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.metrics import dp
 from kivy.app import App
 
-from kivymd.label import MDLabel
-from kivymd.cards import MDCard
+from kivymd.uix.label import MDLabel
+from kivymd.uix.card import MDCard
 
 
 class AudioIndicator(BoxLayout):

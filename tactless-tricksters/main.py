@@ -9,6 +9,8 @@ from kivymd.uix.list import OneLineAvatarListItem
 
 from kivy.uix.screenmanager import ScreenManager
 from kivy.properties import StringProperty
+#from ui.screens.decoder_screen import DecoderScreen
+#from util.utility import Utility
 
 # To register a font name to label base, 
 # this changes the welcome text
@@ -25,6 +27,11 @@ class AppLayout(ScreenManager):
 	
 	def __init__(self, **kwargs):
 		super().__init__(**kwargs)
+		#self.ids.decode.add_widget(DecoderScreen(name='decode', util=self.util))
+		#self.ids.encode.add_widget
+		#self.ids.train.add_widget
+		#self.ids.sign_in.add_widget
+		#self.ids.exit.add_widget
 			
 	def go_to_nav(self):
 		self.current = 'nav'

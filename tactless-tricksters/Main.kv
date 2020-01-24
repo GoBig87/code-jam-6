@@ -96,6 +96,7 @@
 	theme_text_color: "Custom"
 	text_color: 1, 1, 1, 1
 	md_bg_color: app.theme_cls.primary_color
+	on_release: app.navigate(self.text)
 
 
 <AppLayout>:
@@ -194,8 +195,37 @@
 					name: 'Decode'
 					
 					BoxLayout:
-						Label:
-							text: 'Decode'
+						id: decode
+						
+				Screen:
+					name: 'Encode'
+					
+					BoxLayout:
+						id: encode
+			
+				Screen:
+					name: 'Sign In'
+					
+					BoxLayout:
+						id: sign_in
+						
+				Screen:
+					name: 'Calibrate'
+					
+					BoxLayout:
+						id: calibrate
+						
+				Screen:
+					name: 'Train'
+					
+					BoxLayout:
+						id: train
+				
+				Screen:
+					name: 'Exit'
+					
+					BoxLayout:
+						id: exit
 							
 			MDNavigationDrawer:
 				id: nav_drawer
