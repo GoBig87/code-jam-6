@@ -10,7 +10,8 @@ from kivymd.uix.list import OneLineAvatarListItem
 from kivy.uix.screenmanager import ScreenManager
 from kivy.properties import StringProperty
 
-   
+# To register a font name to label base, 
+# this changes the welcome text
 LabelBase.register(
 	name='font',
 	fn_regular='font.otf'
@@ -38,6 +39,9 @@ class MainApp(MDApp):
 	def build(self):
 		menu = Factory.AppLayout()
 		self.root = menu
+		
+	def navigate(self, screen_name):
+		self.root.ids.screen_manager.current = screen_name
 		
 	
 		

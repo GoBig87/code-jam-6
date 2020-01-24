@@ -3,10 +3,10 @@
 
 # Drawer layout
 
-<NavigationItem@OneLineAvatarListItem>
+<NavigationItem>
     theme_text_color: 'Custom'
     divider: None
-#    icon: "None"
+    on_release: app.navigate(self.text)
 
     IconLeftWidget:
         icon: root.icon
@@ -45,7 +45,7 @@
 
             MDLabel:
                 markup: True
-                text: "[b]Morse app's name[/b]\\nVersion: 0.1.0"
+                text: "[b]Morse app's name"
                 x: root.parent.x + dp(10)
                 y: root.height - top_box.height + dp(10)
                 size_hint_y: None
@@ -59,6 +59,10 @@
                 cols: 1
                 size_hint_y: None
                 height: self.minimum_height
+                
+                NavigationItem:
+                	text: "Home"
+					icon: "home"
                 
                 NavigationItem:
                 	text: "Decode"
@@ -95,9 +99,6 @@
 
 
 <AppLayout>:
-	id: screen_manager
-	transition: NoTransition()
-	
 	canvas.before:
 		BorderImage:
 			source: 'ui/img/bur_welcome.jpg'
@@ -105,103 +106,100 @@
 			pos: self.pos
 	
 	Screen:
-		name: 'welcome_screen'
-		FloatLayout:
-			
-			FloatLayout:
-				size_hint: .8, .7
-				pos_hint: {'center_x': .5,'center_y': .5}
-				
-				canvas.before:
-					Color:
-						rgba: 0, 0, 0, 0
-					RoundedRectangle:
-						size: self.size
-						pos: self.pos
-						radius: dp(10), dp(10), dp(10), dp(10)
-						
-				BoxLayout:
-					orientation: 'vertical'
-					size_hint: .8, .8
-					pos_hint: {'center_x': .5,'center_y': .5}
-			
-					Label:
-						text: 'Welcome'
-						color: 1, 1, 1, 1 #app.theme_cls.primary_color
-						font_size: dp(50)
-						font_name: 'font'
-						size_hint_y: .2
-					
-					Widget:
-						size_hint_y: .05
-				
-					GridLayout:
-						cols: 2
-						size_hint_y: .7
-						spacing: dp(10)
-						padding: dp(5)
-				
-						WelcomeBtn:
-							size_hint: 1, 1
-							text: "Decode"
-							icon: "database-export"
-							on_release: root.go_to_nav()
-					
-						WelcomeBtn:
-							size_hint: 1, 1
-							text: "Encode"
-							icon: "database-import"
-					
-						WelcomeBtn:
-							size_hint: 1, 1
-							text: "Sign In"
-							icon: "login-variant"
-	
-					
-						WelcomeBtn:
-							size_hint: 1, 1
-							text: "Calibrate"
-							icon: "cogs"
-		
-					
-						WelcomeBtn:
-							size_hint: 1, 1
-							text: "Train"
-							icon: "database-export"
-	
-					
-						WelcomeBtn:
-							size_hint: 1, 1
-							text: "Exit"
-							icon: "exit-to-app"
-							
-# ---------------------------------------------------------------------------------					
-	Screen:
-		name: 'nav'
-			
 		NavigationLayout:
 			
 			ScreenManager:
-				id: drawer_screens
+				id: screen_manager
+				transition: NoTransition()
+				
 				Screen:
-					name: 'decode'
+					name: "Home"
+					
+					FloatLayout:
+						FloatLayout:
+							size_hint: .8, .7
+							pos_hint: {'center_x': .5,'center_y': .5}
+				
+							canvas.before:
+								Color:
+									rgba: 0, 0, 0, 0
+								RoundedRectangle:
+									size: self.size
+									pos: self.pos
+									radius: dp(10), dp(10), dp(10), dp(10)
+						
+							BoxLayout:
+								orientation: 'vertical'
+								size_hint: .8, .8
+								pos_hint: {'center_x': .5,'center_y': .5}
+			
+								Label:
+									text: 'Welcome'
+									color: 1, 1, 1, 1 #app.theme_cls.primary_color
+									font_size: dp(50)
+									font_name: 'font'
+									size_hint_y: .2
+					
+								Widget:
+									size_hint_y: .05
+				
+								GridLayout:
+									cols: 2
+									size_hint_y: .7
+									spacing: dp(10)
+									padding: dp(5)
+				
+									WelcomeBtn:
+										size_hint: 1, 1
+										text: "Decode"
+										icon: "database-export"
+										on_release: root.go_to_nav()
+					
+									WelcomeBtn:
+										size_hint: 1, 1
+										text: "Encode"
+										icon: "database-import"
+					
+									WelcomeBtn:
+										size_hint: 1, 1
+										text: "Sign In"
+										icon: "login-variant"
+	
+					
+									WelcomeBtn:
+										size_hint: 1, 1
+										text: "Calibrate"
+										icon: "cogs"
+		
+					
+									WelcomeBtn:
+										size_hint: 1, 1
+										text: "Train"
+										icon: "database-export"
+	
+					
+									WelcomeBtn:
+										size_hint: 1, 1
+										text: "Exit"
+										icon: "exit-to-app"
+										
+						MDIconButton:
+							icon: 'menu'
+							pos_hint: {'top': 1}
+							theme_text_color: "Custom"
+							text_color: 1, 1, 1, 1
+							on_release: root.ids.nav_drawer.toggle_nav_drawer()
+							
+				Screen:
+					name: 'Decode'
 					
 					BoxLayout:
-						orientation: 'vertical'
-						
-						MDToolbar:
-							title: "Navigation Drawer"
-							md_bg_color: app.theme_cls.primary_color
-							elevation: 10
-							left_action_items: [['menu', lambda x: nav_drawer.toggle_nav_drawer()]]
-
 						Label:
-							text: 'Hello'
-							font_style: 'H6'
-							color: 0, 0, 0, 1
-			
+							text: 'Decode'
+							
 			MDNavigationDrawer:
 				id: nav_drawer
 				
 				ContentNavigationDrawer:
+			
 		
