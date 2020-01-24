@@ -1,0 +1,11 @@
+# Begin template
+
+- user: None # Hashed user value
+  time: None # message timestamp
+  sent: False # Boolean for sent or received message
+  party: [] # Usually just contains two users (sender + receiver) but can handle more
+  content: None # Text content of message
+  attachment: [] # Message attachments (audio, video, etc.)
+
+# End template
+

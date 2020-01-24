@@ -1,14 +1,16 @@
-# .kv file for main app. Any widgets or layouts defined below will be loaded into memory at runtime
+# .kv file for main app.
+# Any widgets or layouts defined below will be loaded into memory at runtime.
 
 #:kivy 1.11.1
 #:import MDCard kivymd.cards
 #:import MDToolbar kivymd.toolbar
 #:import MDRectangleFlatIconButton kivymd.button
 #:import MDLabel kivymd.label
+#:import MDTextFieldRound kivymd.textfields
 
 
-# ----------------------------------------------------------------------------------------------------------------------
-# Begin Welcome Screen Widgets
+#---------------------------------------------------------------------------------------------------
+# Begin Welcome Screen
 
 <WelcomeButton>
     elevation_normal: 10
@@ -73,7 +75,7 @@
                 text: 'Sign In'
                 icon: 'login-variant'
                 on_press:
-                    root.manager.current = ''
+                    root.manager.current = 'login'
 
             BlankLabel:
 
@@ -82,4 +84,56 @@
                 icon: 'cogs'
                 # TODO: create calibration screen
 
+# End Welcome Screen
+#---------------------------------------------------------------------------------------------------
+# Begin Login Screen
 
+<LoginPair>
+
+    orientation: 'horizontal'
+
+    MDLabel:
+        text: self.parent.field
+        color: 1,1,1,1
+        font_style: 'Body1'
+        halign: 'center'
+        size_hint: (None, None)
+        width: self.size[0]
+        pos_hint: {'right': 1, 'center_y': 0.75}
+
+    MDTextFieldRound:
+        color: 1,1,1,1
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        size_hint: (0.75, 0.4)
+        icon_type: 'without'
+        text: self.parent.field
+
+
+<LoginScreen>
+    canvas.before:
+        Rectangle:
+            size: self.size
+            pos: self.pos
+            source: 'ui/img/welcome_2.png'
+
+    MDCard:
+        padding: dp(24)
+        spacing: dp(24)
+        orientation: 'vertical'
+        size_hint: .65, .4
+        pos_hint: {'center_x': 0.5, 'top': 0.8}
+        md_bg_color: app.theme_cls.accent_color
+
+        MDLabel:
+            text: 'Login'
+            font_style: 'H4'
+            halign: 'center'
+            theme_text_color: 'Custom'
+            text_color: [1, 1, 1, 1]
+            size_hint: 1, .4
+
+        LoginPair:
+            field: 'User:'
+
+        LoginPair:
+            field: 'Password:'

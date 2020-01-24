@@ -1,2 +1,4 @@
 -e git+https://github.com/HeaTTheatR/KivyMD.git@0.99.98#egg=kivymd
 Kivy==1.11.0
+pyyaml==5.3
+passlib==1.7.2

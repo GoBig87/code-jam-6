@@ -14,7 +14,9 @@ from ui.screens.encoder_screen import EncoderScreen
 from ui.screens.decoder_screen import DecoderScreen
 from ui.screens.message_screen import MessageScreen
 from ui.screens.conversation_screen import ConversationScreen
+from ui.screens.login_screen import LoginScreen
 
+from util.database import Database
 from util.utility import Utility
 from ui.widgets.nav_drawer import MyNavigationLayout
 
@@ -39,6 +41,7 @@ class MainBox(FloatLayout):
         self.content.add_widget(DecoderScreen(name='decode', util=self.util))
         self.content.add_widget(MessageScreen(name='message', util=self.util))
         self.content.add_widget(ConversationScreen(name='conversation', util=self.util))
+        self.content.add_widget(LoginScreen(name='login', util=self.util))
         # TODO: self.content.add_widget(CalibrationScreen(name='calibration, util=self.util))
         # # Place screens here
 
@@ -57,6 +60,10 @@ class MainApp(App):
     theme_cls.accent_hue = '800'
     theme_cls.theme_style = 'Dark'
     accent_color = [255/255, 64/255, 129/255, 1]
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.db = Database('util/users.txt', 'util/messages.yaml')
 
     def build(self):
         return MainBox()
