@@ -112,7 +112,7 @@
 			source: 'ui/img/bur_welcome.jpg'
 			size: self.size
 			pos: self.pos
-	
+		
 	Screen:
 		NavigationLayout:
 			
@@ -227,6 +227,19 @@
 					
 					FloatLayout:
 						id: train
+						OpenDrawer:
+							
+				Screen:
+					name: 'Message'
+					
+					FloatLayout:
+						ScreenManager:
+							id: message
+							
+							Screen:
+								name: 'login'
+								
+								FloatLayout:
 						OpenDrawer:
 				
 				Screen:

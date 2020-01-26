@@ -9,6 +9,7 @@ from kivymd.uix.list import OneLineAvatarListItem
 
 from kivy.uix.screenmanager import ScreenManager
 from kivy.properties import StringProperty
+#from kivy.uix.imagelist import FitImage
 #from ui.screens.decoder_screen import DecoderScreen
 #from util.utility import Utility
 
@@ -32,9 +33,6 @@ class AppLayout(ScreenManager):
 		#self.ids.train.add_widget
 		#self.ids.sign_in.add_widget
 		#self.ids.exit.add_widget
-			
-	def go_to_nav(self):
-		self.current = 'nav'
 	
 	
 class MainApp(MDApp):
